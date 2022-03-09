@@ -8,6 +8,9 @@ export default function App() {
       <div className="container">
         <h1>Calc React</h1>
         <Calculadora />
+        <div className="footer">
+          <span><strong>℗</strong>Direitos reservados!<br/>Desenvolvido por: Paulo Bruno Soares</span>
+        </div>
       </div>
     </div>
   );
