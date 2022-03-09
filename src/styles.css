@@ -17,3 +17,10 @@
 .container > h1 {
   color: white;
 }
+
+.footer{
+  position: absolute;
+  color: white;
+  width: 100%;
+  bottom: 40px;
+}
