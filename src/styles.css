@@ -7,11 +7,26 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  background: rgb(0, 100, 150);
+
+}
+
+.header{
+  width: 100%;
+  padding-top: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:  1rem;
+}
+
+.header > img{
+  width: 45px;
 }
 
 .container {
   height: 100vh;
-  background: rgb(56, 48, 48);
 }
 
 .container > h1 {
