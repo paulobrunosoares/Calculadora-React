@@ -1,8 +1,13 @@
-## Link do projeto em produção: https://csb-xbwu4d.netlify.app/
-# Getting Started with Create React App
+## Link do projeto em produção v1.0: https://csb-xbwu4d.netlify.app/
+## Link do projeto em produção v1.1: https://calculadora-react-pb.vercel.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+<div align="center">
+    <kbd><img src="./assets/calcReact02.png" alt="Tablet" width="600px;" height="600px;"/></kbd>
+</div>
+
+# Getting Started with Create React App
 ## Available Scripts
 
 In the project directory, you can run:
