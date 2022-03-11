@@ -8,12 +8,13 @@
   font-family: sans-serif;
   text-align: center;
   background: rgb(0, 100, 150);
+  height: 100vh;
 
 }
 
 .header{
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 1rem;
   color: white;
   display: flex;
   justify-content: center;
@@ -26,9 +27,12 @@
 }
 
 .container {
-  height: 100vh;
-}
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
 
+}
 .container > h1 {
   color: white;
   padding-top: 1rem;
@@ -39,4 +43,28 @@
   color: white;
   width: 100%;
   bottom: 40px;
+}
+
+@media (max-width: 455px){
+  
+  .header {
+    padding: 0;
+  }
+
+  .header h1{
+    font-size: 6.5vw;
+  }
+
+  .header > img{
+    width: 35px;
+  }
+
+}
+
+@media (max-height: 535px){
+
+  .footer{
+    position: initial;
+  }
+
 }
