@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./calculadora-c.css";
 
 export default function Calculadora() {
@@ -7,6 +7,29 @@ export default function Calculadora() {
   const [isOperador, setIsOperador] = useState(false);
   const [isCalc, setCalc] = useState(false);
   const [countOP, setCountOP] = useState(0);
+  const inputBtn = useRef(null)
+
+  useEffect( ()=>{
+    document.addEventListener('keydown', addEvent)
+    
+    return ()=>{
+      document.removeEventListener('keydown', addEvent)
+    } 
+  }, [])
+
+  function addEvent(ev){
+      // console.log(ev.key)
+      inputBtn.current.querySelectorAll('button')
+        .forEach( (btn) => {
+          if(btn.title == ev.key){
+            btn.click()
+          } 
+        })
+  }
+
+  const backspace = () =>{
+    setResult(result.substring(0, result.length -1))
+  }
 
   const addItem = (item) => {
     // console.log(item.target.title);
@@ -38,22 +61,33 @@ export default function Calculadora() {
   const clear = () => {
     setResult("");
     setCountOP(0);
+    setCalc(false)
   };
 
   const calc = () => {
-    try {
-      const calculo = eval(result).toString().slice(0, 5);
-      console.log(calculo);
-      setResult(calculo);
-      setResultMemory(result + " = " + calculo);
-      setCalc(true);
-    } catch (error) {
-      alert("Calculo invalido");
+    if(Number(result) !== eval(result) && result.length > 0){
+      try {
+        const calculo = eval(result).toString().slice(0, 5);
+        // console.log(calculo);
+        if(!isNaN(calculo)){
+          setResult(calculo);
+          setResultMemory(result + " = " + calculo)
+          setCalc(true)
+       }else{
+         setResult('0');
+         setResultMemory("A divisão por zero não é definida")
+       }
+        setCalc(true);
+      } catch (error) {
+        alert("Calculo invalido");
+      }
+    }else{
+      consloe.log('ok')
     }
   };
 
   const calcPorcentagem = () => {
-    const element = result.split(/[+|*|-|\/]/g);
+    const element = result.split(/[-|*|+|\/]/g);
     const operador = result.replace(/\d/g, "").replace(".", "");
     try {
       const calc =
@@ -74,16 +108,23 @@ export default function Calculadora() {
   };
 
   const raiz = () => {
-    const raiz = Math.sqrt(result);
-    isNaN(raiz)
-      ? alert("Calculo invalido")
-      : setResult(raiz.toString().slice(0, 10));
+    if(result.length > 0){
+      const raiz = Math.sqrt(result);
+      if(isNaN(raiz)){
+        alert("Calculo invalido")
+      }else{
+        setResult(raiz.toString().slice(0, 10));
+        setResultMemory("raiz " + result + " = " + raiz.toFixed(2).toString().slice(0, 5));
+      }
+ 
+    }
+
   };
   return (
     <div className="container-calc">
       <label className="resultMemory">{resultMemory}</label>
       <input type="text" className="result" value={result} />
-      <div className="content">
+      <div className="content" ref={inputBtn}>
         <div className="content-btn-number">
           <button className="btnNumber" title="7" onClick={addItem}>
             7
@@ -118,15 +159,15 @@ export default function Calculadora() {
           <button className="btnNumber" title="." onClick={addItem}>
             .
           </button>
-          <button className="btnCalcule" onClick={calc}>
+          <button className="btnCalcule" title="Enter" onClick={calc}>
             =
           </button>
         </div>
         <div className="content-btn-operation">
-          <button className="btnOperation op-A" title="CE" onClick={clear}>
+          <button className="btnOperation op-A" title="Escape" onClick={clear}>
             CE
           </button>
-          <button className="btnOperation op-A" onClick={raiz}>
+          <button className="btnOperation op-A" title="r" onClick={raiz}>
             R
           </button>
           <button
@@ -168,6 +209,14 @@ export default function Calculadora() {
           >
             +
           </button>
+          <button
+            className="btnOperation op-Ad"
+            value="operador"
+            title="Backspace"
+            onClick={backspace}
+            hidden="true"
+          ></button>
+
         </div>
       </div>
     </div>
