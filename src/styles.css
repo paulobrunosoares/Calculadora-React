@@ -26,6 +26,23 @@
   width: 45px;
 }
 
+.logo-react {
+	animation-name: rotate;
+	animation-duration: 7s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .container {
   width: 100%;
   display: flex;

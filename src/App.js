@@ -9,7 +9,7 @@ export default function App() {
 
         <div className="header"> 
           <h1>Calculadora em React</h1>
-          <img src={logoReact} alt="logo" /> 
+          <img className="logo-react" src={logoReact} alt="logo" /> 
         </div>
 
         <div className="container">
