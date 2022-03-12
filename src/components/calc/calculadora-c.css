@@ -81,10 +81,10 @@ button {
   grid-template-columns: 69px 69px 69px 50px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "a b c d"
+    "a . b c"
+    ". . . d"
     ". . . e"
     ". . . f"
-    ". . . g"
     ". . . g";
   row-gap: 5px;
   padding: 38px 8px 7px 10px;
@@ -111,8 +111,8 @@ button {
 }
 .op-Ad {
   grid-area: g;
-  grid-row-start: 4/6;
+  /*grid-row-start: 4/6;*/
   height: 100%;
   grid-column: 4;
-  border-radius: 10px;
+  border-radius: 50%;
 }

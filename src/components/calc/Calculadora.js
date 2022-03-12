@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./calculadora-c.css";
+import iconDes from "../../assets/reply.svg"
 
 export default function Calculadora() {
   const [result, setResult] = useState("");
@@ -167,6 +168,10 @@ export default function Calculadora() {
           <button className="btnOperation op-A" title="Escape" onClick={clear}>
             CE
           </button>
+          <button className="btnOperation op-A" title="Backspace" onClick={backspace}>
+            <img src={iconDes} width="28px;" alt="des" />
+          </button>
+
           <button className="btnOperation op-A" title="r" onClick={raiz}>
             R
           </button>
@@ -209,13 +214,6 @@ export default function Calculadora() {
           >
             +
           </button>
-          <button
-            className="btnOperation op-Ad"
-            value="operador"
-            title="Backspace"
-            onClick={backspace}
-            hidden="true"
-          ></button>
 
         </div>
       </div>
